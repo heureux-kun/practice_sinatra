@@ -1,11 +1,17 @@
+## memoアプリ起動方法
 
-bundle add sinatra --skip-install
+### sinatraのインストール（インストールされていない場合）
+`bundle add sinatra --skip-install`
 
-bundle install --path vendor/bundle
+### プロジェクトディレクトリに移動
+`cd (プロジェクトディレクトリ)`
 
-プロジェクトディレクトリの中で
+### gemのインストール
+`bundle install --path vendor/bundle`
 
-bundle exec ruby app.rb
+### アプリを起動
+`bundle exec ruby app.rb`
 
-http://localhost:4567/
+を実行した後、
 
+`http://localhost:4567/にアクセス`

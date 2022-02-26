@@ -10,7 +10,7 @@
   <header>
     <div id="Logo"><a href="/">メモアプリ</a></div>
   </header>
-  <form method="post" action="/memos/<%= params['id'] %>">
+  <form method="post" action="/memos/<%= @memo['id'] %>/edit">
     <main>
       <section>
           <h1><input type="text" value="<%= @memo['title'] %>" /></h1>
@@ -18,8 +18,8 @@
       </section>
     </main>
     <footer>
-      <input type="hidden" name="_METHOD" value="PATCH">
-      <input type="submit" value="変更" />
+      <input type="hidden" name="_method" value="PATCH">
+      <input type="submit" value="保存する" />
     </footer>
   </form>
 </body>

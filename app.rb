@@ -33,18 +33,6 @@ post '/memos/' do
   redirect to('/memos/') 
 end
 
-# メモ変更画面
-get '/memos/:id/edit' do
-  file_url = "db/#{params['id']}.json"
-  @memo = JSON.parse(File.open(file_url,"r").read)
-  erb :edit
-end
-
-# メモ変更）
-post '/memos/:id/' do
-  erb :show
-end
-
 # メモ詳細画面
 get '/memos/:id' do
   file_url = "db/#{params['id']}.json"
@@ -52,7 +40,32 @@ get '/memos/:id' do
   erb :show
 end
 
-# メモを削除した後の一覧画面
-post '/memos/' do
-  erb :index
+# メモ変更画面表示
+get '/memos/:id/edit' do
+  file_url = "db/#{params['id']}.json"
+  @memo = JSON.parse(File.open(file_url,"r").read)
+  erb :edit
+end
+
+# メモ変更
+patch '/memos/:id/edit' do
+  file_url = "db/#{params['id']}.json"
+  # メモの内容をローカル変数に入れる
+  memo = {id: params[:id], title: params[:title], body: params[:body]}
+  # ローカル変数の内容でファイルを上書きする
+  File.open(file_url, "w") do |file|
+    JSON.dump(memo, file)
+  end
+  redirect to('/memos/') 
+end
+
+# メモ削除
+delete '/memos/:id' do
+  file_url = "db/#{params['id']}.json"
+  begin
+    File.delete(file_url)
+    redirect to('/memos/') 
+  rescue
+    p 'ファイルを削除できませんでした'
+  end
 end
