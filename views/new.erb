@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <header>
-    <div id="Logo"><a href="/">メモアプリ</a></div>
-  </header>
-  <form method="post" action="/memos/">
-    <main>
-      <section>
-          <h1>タイトル</h1>
-          <input type="text" value="" name="title" />
-          <h2>内容</h2>
-          <textarea name="body"></textarea>
-      </section>
-    </main>
-    <footer>
-      <input type="submit" value="保存" />
-    </footer>
-  </form>
-</body>
-</html>
+<form method="post" action="/memos/">
+  <main>
+    <section>
+        <h1>タイトル</h1>
+        <input type="text" value="" name="title" />
+        <h2>内容</h2>
+        <textarea name="body"></textarea>
+    </section>
+  </main>
+  <footer>
+    <input type="submit" value="保存" />
+  </footer>
+</form>
