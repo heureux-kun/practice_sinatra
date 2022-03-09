@@ -4,6 +4,12 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
 
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+end
+
 get '/' do
   redirect to('/memos/')
 end
@@ -26,7 +32,7 @@ end
 post '/memos/' do
   # メモの内容をローカル変数に入れる
   time = Time.now.strftime('memo_%Y%m%d%H%M%S')
-  memo = { id: time, title: params[:title], body: params[:body] }
+  memo = { id: time, title: h(params[:title]), body: h(params[:body]) }
   # ローカル変数の内容をファイルを新規作成して入れる
   File.open("db/#{time}.json", 'w') do |file|
     JSON.dump(memo, file)
@@ -52,7 +58,7 @@ end
 patch '/memos/:id/edit' do
   file_url = "db/#{params[:id]}.json"
   # メモの内容をローカル変数に入れる
-  memo = { id: params[:id], title: params[:title], body: params[:body] }
+  memo = { id: params[:id], title: h(params[:title]), body: h(params[:body]) }
   # ローカル変数の内容でファイルを上書きする
   File.open(file_url, 'w') do |file|
     JSON.dump(memo, file)
