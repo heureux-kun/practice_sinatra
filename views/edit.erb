@@ -2,8 +2,8 @@
   <main>
     <section>
       <h1>変更画面</h1>
-      <div><input type="text" value="<%= @memo['title'] %>" name="title" /></div>
-      <textarea name="body" ><%= @memo['body'] %></textarea>
+      <div><input type="text" value="<%= h(@memo['title']) %>" name="title" /></div>
+      <textarea name="body" ><%= h(@memo['body']) %></textarea>
     </section>
   </main>
   <footer>

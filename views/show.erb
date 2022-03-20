@@ -1,9 +1,9 @@
 <main>
   <section>
   <%= @file_url %>
-    <h1><%= @memo['title'] %></h1>
+    <h1><%= h(@memo['title']) %></h1>
     <p>
-      <%= @memo['body'] %>
+      <%= h(@memo['body']) %>
     </p>
   </section>
 </main>
