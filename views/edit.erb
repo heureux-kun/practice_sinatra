@@ -1,8 +1,9 @@
-<form method="post" action="/memos/<%= @memo['id'] %>/edit">
+<form method="post" action="/memos/<%= @memo['id'] %>">
   <main>
     <section>
-        <h1><input type="text" value="<%= @memo['title'] %>" /></h1>
-        <textarea><%= @memo['body'] %></textarea>
+      <h1>変更画面</h1>
+      <div><input type="text" value="<%= @memo['title'] %>" name="title" /></div>
+      <textarea name="body" ><%= @memo['body'] %></textarea>
     </section>
   </main>
   <footer>

@@ -55,7 +55,7 @@ get '/memos/:id/edit' do
 end
 
 # メモ変更
-patch '/memos/:id/edit' do
+patch '/memos/:id' do
   file_url = "db/#{params[:id]}.json"
   # メモの内容をローカル変数に入れる
   memo = { id: params[:id], title: h(params[:title]), body: h(params[:body]) }
