@@ -1,0 +1,18 @@
+<main>
+  <section>
+  <%= @file_url %>
+    <h1><%= h(@memo['title']) %></h1>
+    <p>
+      <%= h(@memo['body']) %>
+    </p>
+  </section>
+</main>
+<footer>
+  <form method="get" action="/memos/<%= params['id'] %>/edit">
+    <input type="submit" value="変更する" />
+  </form>
+  <form method="post" action="/memos/<%= params['id'] %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="削除する" />
+  </form>
+</footer>
